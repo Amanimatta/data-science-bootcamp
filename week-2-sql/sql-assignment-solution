@@ -1,0 +1,9 @@
+select 
+	a.agent_code, 
+    agent_name,
+    count(DISTINCT cust_code) as cust_count,
+    a.commission as commission,
+    sum(ORD_AMOUNT*COMMISSION) as earning
+from agents as a, orders as o
+where a.agent_code=o.agent_code
+group by a.agent_code;
